@@ -2,12 +2,10 @@
 import axios from 'axios';
 import { store } from '../../store';
 import { RouterLink } from 'vue-router';
-import postCard from '../components/postCard.vue';
 
 export default {
     components: {
         RouterLink,
-        postCard
     },
     data() {
         return {
@@ -15,10 +13,20 @@ export default {
         }
     },
     methods: {
-        getPosts() {
-            axios.get(this.store.myUrlPost)
+        getCategories() {
+            axios.get(this.store.myUrlCat)
                 .then(response => {
-                    this.store.posts = response.data;
+                    this.store.categories = response.data;
+                    console.log(this.store.posts);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        getTags() {
+            axios.get(this.store.myUrlTag)
+                .then(response => {
+                    this.store.tags = response.data;
                     console.log(this.store.posts);
                 })
                 .catch(error => {
@@ -27,17 +35,15 @@ export default {
         }
     },
     mounted() {
-        this.getPosts();
+        this.getCategories();
+        this.getTags();
     }
 }
 </script>
 
 <template>
-    <div class="row">
-        <div class="col-3" v-for="(element, index) in store.posts" :key="index">
-            <postCard :post="element" />
-        </div>
-    </div>
+    <h1>creo post</h1>
+        
 </template>
 
 

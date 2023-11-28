@@ -15,8 +15,8 @@ export default {
 </script>
 
 <template>
-  <div class="card mb-5" style="height: 25rem;">
-    <div class="card-body d-flex flex-column justify-content-between">
+  <div class="card mb-5" style="height: 10rem;">
+    <div class="card-body d-flex flex-column justify-content-center">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">{{ post.content }}</p>
       <p class="card-text">{{ post.category.name }}</p>
