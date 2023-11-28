@@ -33,10 +33,13 @@ export default {
 </script>
 
 <template>
-    <div class="row">
-        <div class="col-3" v-for="(element, index) in store.posts" :key="index">
-            <postCard :post="element" />
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-3" v-for="(element, index) in store.posts" :key="index">
+                <postCard :post="element" />
+            </div>
         </div>
+
     </div>
 </template>
 
