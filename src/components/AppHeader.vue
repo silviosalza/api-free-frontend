@@ -26,10 +26,10 @@ export default {
           </li>
             <li>
               <a class="link" aria-current="page" href="#"><router-link :to="{ name: 'home' }"
-                  aria-current="page">RACING CALENDAR</router-link></a>
+                  aria-current="page">CALENDARIO</router-link></a>
             </li>
             <li>
-              <a class="link" href="#"><router-link :to="{ name: 'create' }" aria-current="page">CREATE EVENT</router-link></a>
+              <a class="link" href="#"><router-link :to="{ name: 'create' }" aria-current="page">CREA EVENTO</router-link></a>
             </li>
           </ul>
     </nav>

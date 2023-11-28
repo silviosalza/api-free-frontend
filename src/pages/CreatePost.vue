@@ -70,37 +70,44 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Title</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="My Title" v-model="formData.title">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Image URL</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Https://" v-model="formData.imageURL">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="formData.content"></textarea>
-        </div>
-        <label for="" class="form-label">Location</label>
-        <select class="form-select" aria-label="Default select example" v-model="selectedCategory">
-            <option v-for="(category, index) in store.categories" :key="index" :value="category.id">
-                {{ category.name }}
-            </option>
-        </select>
-        <label for="" class="form-label">Fondo</label>
-        <div>
-            <label v-for="(tag, index) in store.tags" :key="index" :class="{ 'btn': true, 'btn-primary': isSelected(tag) }">
-                <input type="checkbox" class="btn-check" :id="'btn-check-' + index" v-model="selectedTags" :value="tag">
-                {{ tag.name }}
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Invia</button>
-    </form>
+    <div class="container">
+
+        <form @submit.prevent="submitForm">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome dell'evento</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="My Title" v-model="formData.title">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Https://" v-model="formData.imageURL">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descrizione</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="formData.content"></textarea>
+            </div>
+            <label for="" class="form-label">Location</label>
+            <select class="form-select" aria-label="Default select example" v-model="selectedCategory">
+                <option v-for="(category, index) in store.categories" :key="index" :value="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+            <label for="" class="form-label">Fondo</label>
+            <div>
+                <label v-for="(tag, index) in store.tags" :key="index" :class="{ 'btn': true, 'btn-primary': isSelected(tag) }">
+                    <input type="checkbox" class="btn-check" :id="'btn-check-' + index" v-model="selectedTags" :value="tag">
+                    {{ tag.name }}
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Invia</button>
+        </form>
+    </div>
 </template>
 
 
 <style lang="scss">
 @use "../styles/general.scss" as *;
+
+label{
+    font-weight: 800;
+}
 </style>
