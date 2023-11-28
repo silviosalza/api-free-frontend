@@ -10,6 +10,7 @@ export default {
     data() {
         return {
             store,
+            selectedTags: []
         }
     },
     methods: {
@@ -32,7 +33,14 @@ export default {
                 .catch(error => {
                     console.error(error);
                 });
-        }
+        },
+        handleCheckboxChange(tag) {
+      console.log('Tag selezionato:', tag);
+      console.log('Tags selezionati:', this.selectedTags);
+    },
+    isSelected(tag) {
+      return this.selectedTags.includes(tag);
+    }
     },
     mounted() {
         this.getCategories();
@@ -42,8 +50,24 @@ export default {
 </script>
 
 <template>
-    <h1>creo post</h1>
-        
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="My Title">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <select class="form-select" aria-label="Default select example">
+        <option selected>Category</option>
+        <option value="1">One</option>
+    </select>
+    <div>
+    <label v-for="(tag, index) in store.tags" :key="index" :class="{'btn': true, 'btn-primary': isSelected(tag)}">
+      <input type="checkbox" class="btn-check" :id="'btn-check-' + index" v-model="selectedTags" :value="tag" @change="handleCheckboxChange(tag)">
+      {{ tag.name }}
+    </label>
+  </div>
 </template>
 
 
